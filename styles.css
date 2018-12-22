@@ -1,0 +1,83 @@
+.vl {
+  border-left: 6px solid black;
+  height: 36px;
+  position: absolute;
+ top: 270px;
+ left: 370px;
+
+}
+
+.v2 {
+  border-left: 6px solid black;
+  height: 36px;
+  position: absolute;
+ top: 270px;
+ left: 880px;
+}
+.v3 {
+  border-left: 6px solid black;
+  height: 38px;
+  position: absolute;
+ top: 325px;
+ left: 370px;
+}
+.v4 {
+  border-left: 6px solid black;
+  height: 38px;
+  position: absolute;
+ top: 325px;
+ left: 620px;
+}
+#start{
+  width: 80px;
+  height: 38px;
+  position: absolute;
+ top: 425px;
+ left: 870px;
+}
+#numberoftransaction{
+  width: 80px;
+  height: 38px;
+  position: absolute;
+ top: 425px;
+ left: 770px;
+}
+#numberoftransactiontext{
+  position: absolute;
+ top: 380px;
+ left: 720px;
+ font-size: 25px;
+}
+#transactiontype{
+  position: absolute;
+ top: 460px;
+ left: 780px;
+ font-size: 25px;
+}
+body {
+ background-image: url("back.jpg");
+ overflow-x: scroll;
+}
+
+#dev1
+{
+  position: absolute;
+ top: 40px;
+ left: 320px;
+ font-size: 15px;
+}
+#dev2
+{
+  position: absolute;
+ top: 40px;
+ left: 825px;
+ font-size: 15px;
+}
+
+#dev3
+{
+  position: absolute;
+ top: 385px;
+ left: 320px;
+ font-size: 15px;
+}

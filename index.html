@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PCI GUI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="script.js"></script>
+
+</head>
+<body>
+  <form>
+  <div class="radio" id="dev1">
+        <label><input type="radio"  name="optradio" id="dev1Initiator">Initiator</label>
+          <label><input type="radio" name="optradio" id="dev1Target">Target</label>
+  </div>
+</form>
+<form>
+  <div class="radio" id="dev2">
+        <label><input type="radio" name="optradio" id="dev2Initiator">Initiator</label>
+          <label><input type="radio" name="optradio" id="dev2Target">Target</label>
+  </div>
+</form>
+<form>
+  <div class="radio" id="dev3">
+        <label><input type="radio" name="optradio" id="dev3Initiator">Initiator</label>
+          <label><input type="radio" name="optradio" id="dev3Target">Target</label>
+  </div>
+</form>
+  <svg width="500" height="280">
+    <g>
+    <rect x="250" y="20" rx="20" ry="20" width="250" height="250" style="fill:red;stroke:black;stroke-width:5;opacity:0.8" />
+    <text x="320" y="50" font-family="Verdana" font-size="25" fill="gray">Device A</text>
+    <text x="330" y="80" font-family="Verdana" font-size="20" fill="black" id="d1-w1">xxxxxxxx</text>
+    <text x="330" y="100" font-family="Verdana" font-size="20" fill="black" id="d1-w2">xxxxxxxx</text>
+    <text x="330" y="120" font-family="Verdana" font-size="20" fill="black" id="d1-w3">xxxxxxxx</text>
+    <text x="330" y="140" font-family="Verdana" font-size="20" fill="black" id="d1-w4">xxxxxxxx</text>
+    <text x="330" y="160" font-family="Verdana" font-size="20" fill="black" id="d1-w5">xxxxxxxx</text>
+    <text x="330" y="180" font-family="Verdana" font-size="20" fill="black" id="d1-w6">xxxxxxxx</text>
+    <text x="330" y="200" font-family="Verdana" font-size="20" fill="black" id="d1-w7">xxxxxxxx</text>
+    <text x="330" y="220" font-family="Verdana" font-size="20" fill="black" id="d1-w8">xxxxxxxx</text>
+    <text x="330" y="240" font-family="Verdana" font-size="20" fill="black" id="d1-w9">xxxxxxxx</text>
+    <text x="330" y="260" font-family="Verdana" font-size="20" fill="black" id="d1-w10">xxxxxxxx</text>
+</g>
+
+  </svg>
+  <svg width="500" height="280">
+    <g>
+    <rect x="250" y="20" rx="20" ry="20" width="250" height="250" style="fill:red;stroke:black;stroke-width:5;opacity:0.8" />
+    <text x="320" y="50" font-family="Verdana" font-size="25" fill="gray">Device B</text>
+    <text x="330" y="80" font-family="Verdana" font-size="20" fill="black" id="d2-w1">xxxxxxxx</text>
+    <text x="330" y="100" font-family="Verdana" font-size="20" fill="black" id="d2-w2">xxxxxxxx</text>
+    <text x="330" y="120" font-family="Verdana" font-size="20" fill="black" id="d2-w3">xxxxxxxx</text>
+    <text x="330" y="140" font-family="Verdana" font-size="20" fill="black" id="d2-w4">xxxxxxxx</text>
+    <text x="330" y="160" font-family="Verdana" font-size="20" fill="black" id="d2-w5">xxxxxxxx</text>
+    <text x="330" y="180" font-family="Verdana" font-size="20" fill="black" id="d2-w6">xxxxxxxx</text>
+    <text x="330" y="200" font-family="Verdana" font-size="20" fill="black" id="d2-w7">xxxxxxxx</text>
+    <text x="330" y="220" font-family="Verdana" font-size="20" fill="black" id="d2-w8">xxxxxxxx</text>
+    <text x="330" y="240" font-family="Verdana" font-size="20" fill="black" id="d2-w9">xxxxxxxx</text>
+    <text x="330" y="260" font-family="Verdana" font-size="20" fill="black" id="d2-w10">xxxxxxxx</text>
+</g>
+</svg>
+<div class="vl"></div>
+<div class="v2"></div>
+<div class="v3"></div>
+<div class="v4"></div>
+  <div class="container">
+<br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+
+      </div>
+    </div>
+  </div>
+
+  <svg width="500" height="280">
+    <g>
+    <rect x="250" y="20" rx="20" ry="20" width="250" height="250" style="fill:red;stroke:black;stroke-width:5;opacity:0.8" />
+    <text x="320" y="50" font-family="Verdana" font-size="25" fill="gray">Device C</text>
+    <text x="330" y="80" font-family="Verdana" font-size="20" fill="black" id="d3-w1">xxxxxxxx</text>
+    <text x="330" y="100" font-family="Verdana" font-size="20" fill="black" id="d3-w2">xxxxxxxx</text>
+    <text x="330" y="120" font-family="Verdana" font-size="20" fill="black" id="d3-w3">xxxxxxxx</text>
+    <text x="330" y="140" font-family="Verdana" font-size="20" fill="black" id="d3-w4">xxxxxxxx</text>
+    <text x="330" y="160" font-family="Verdana" font-size="20" fill="black" id="d3-w5">xxxxxxxx</text>
+    <text x="330" y="180" font-family="Verdana" font-size="20" fill="black" id="d3-w6">xxxxxxxx</text>
+    <text x="330" y="200" font-family="Verdana" font-size="20" fill="black" id="d3-w7">xxxxxxxx</text>
+    <text x="330" y="220" font-family="Verdana" font-size="20" fill="black" id="d3-w8">xxxxxxxx</text>
+    <text x="330" y="240" font-family="Verdana" font-size="20" fill="black" id="d3-w9">xxxxxxxx</text>
+    <text x="330" y="260" font-family="Verdana" font-size="20" fill="black" id="d3-w10">xxxxxxxx</text>
+</g>
+</svg>
+<svg width="500" height="280">
+  <g>
+  <rect x="50" y="20" rx="20" ry="20" width="150" height="150" style="fill:red;stroke:black;stroke-width:5;opacity:0.8" />
+  <text x="80" y="80" font-family="Verdana" font-size="25" fill="gray">Arbiter</text>
+</g>
+</svg>
+<br>
+<g>
+  <text id="numberoftransactiontext" font-family="Verdana" fill="gray">Number of Dataphases</text>
+ <input type="text" id="numberoftransaction" name="numberoftransaction" >
+ <input id="start" type="button" onclick="myFunction()" value="Start">
+ <form>
+ <div class="radio" id="transactiontype">
+       <label><input type="radio" name="optradio" id="transactiontypeWrite">Write</label>
+       <label><input type="radio" name="optradio" id="transactiontypeRead">Read</label>
+ </div>
+</form>
+</g>
+<div id="chartContainer" style="height: 1200px; width: 100%;"></div>
+
+</body>
+</html>
