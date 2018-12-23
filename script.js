@@ -399,8 +399,9 @@ var IRDYDataPoints=[];
 var TRDYDataPoints=[];
 var DEVSELDataPoints=[];
 var size=0;
-
-
+var lastplace=[0,0,0];
+var i;
+var j;
 
 
 
@@ -454,7 +455,7 @@ else if(master2_gnt==1)
   master3_gnt=0;
 
 //////////////////////////////////
-var c=0;
+var c=0,e=0;
 var t,m;
 var word_read,word_write;
 if(master1==1)
@@ -488,17 +489,36 @@ t=3;
 word_read="CCCCCCCC";
 }
 if(write==1)
+{
 for(c=1;c<=numberoftransaction;c++)
 {
-document.getElementById("d"+t+"-w"+c).innerHTML = word_write;
-document.getElementById("d"+t+"-w"+c).style.fontSize = "large";
+  i=lastplace[t-1]+c;
+document.getElementById("d"+t+"-w"+i).innerHTML = word_write;
+document.getElementById("d"+t+"-w"+i).style.fontSize = "large";
+//if(c==numberoftransaction)
+
 }
+for(c=1;c<=numberoftransaction;c++)
+lastplace[t-1]++;
+}
+if(lastplace[t-1]==10)
+lastplace[t-1]=0;
+
+
 if(read==1)
-for(c=1;c<=numberoftransaction;c++)
 {
-document.getElementById("d"+m+"-w"+c).innerHTML = word_read;
-document.getElementById("d"+m+"-w"+c).style.fontSize = "large";
+for(e=1;e<=numberoftransaction;e++)
+{
+  j=lastplace[m-1]+e;
+document.getElementById("d"+m+"-w"+j).innerHTML = word_read;
+document.getElementById("d"+m+"-w"+j).style.fontSize = "large";
 }
+for(e=1;e<=numberoftransaction;e++)
+lastplace[m-1]++;
+}
+
+if(lastplace[m-1]==10)
+lastplace[m-1]=0;
 /*document.getElementById("d1-w2").innerHTML = "AAAAAAAA";
 document.getElementById("d1-w2").style.fontSize = "large";
 document.getElementById("d1-w3").innerHTML = "AAAAAAAA";
