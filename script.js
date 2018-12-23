@@ -1,7 +1,7 @@
-function generateclockDataPoints(size,max,min) {
+function generateclockDataPoints(size,max,min,onephase_inc) {
     var i,
         arr = [];
-    for (i = 0; i < size; i++) {
+    for (i = 0; i < size+onephase_inc; i++) {
         arr.push({
             y:max
         });
@@ -13,14 +13,14 @@ function generateclockDataPoints(size,max,min) {
 }
 
 
-function generatereqDataPoints(index,m1,m2,m3,size) {
+function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc) {
     var i,flag=1,master1,master2,master3,
         arr = [];
 master1=m1;
 master2=m2;
 master3=m3;
   if(index==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size+2+onephase_inc; i++) {
       if(flag==1)
         arr.push({
             y:25-index
@@ -36,7 +36,7 @@ master1=0;
         }
     }
 else if(index==2)
-      for (i = 0; i < 2*size-2; i++) {
+      for (i = 0; i < 2*size+2+onephase_inc; i++) {
         if(flag==1)
           arr.push({
               y:25-index-1
@@ -52,7 +52,7 @@ else if(index==2)
           }
       }
 else if(index==3)
-        for (i = 0; i < 2*size-2; i++) {
+        for (i = 0; i < 2*size+2+onephase_inc; i++) {
           if(flag==1)
             arr.push({
                 y:25-index-2
@@ -88,14 +88,14 @@ else if(index==3)
 
 
 
-function generategntDataPoints(index,m1,m2,m3,size) {
+function generategntDataPoints(index,m1,m2,m3,size,onephase_inc) {
     var i,flag=1,master1,master2,master3,
         arr = [];
 master1=m1;
 master2=m2;
 master3=m3;
   if(index==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size+2+onephase_inc; i++) {
       if(flag==1)
         arr.push({
             y:19-index
@@ -111,7 +111,7 @@ master1=0;
         }
     }
 else if(index==2)
-      for (i = 0; i < 2*size-2; i++) {
+      for (i = 0; i < 2*size+2+onephase_inc; i++) {
         if(flag==1)
           arr.push({
               y:19-index-1
@@ -127,7 +127,7 @@ else if(index==2)
           }
       }
 else if(index==3)
-        for (i = 0; i < 2*size-2; i++) {
+        for (i = 0; i < 2*size+2+onephase_inc; i++) {
           if(flag==1)
             arr.push({
                 y:19-index-2
@@ -158,16 +158,18 @@ else if(index==3)
 
 
 
-function generateframeDataPoints(size,read,write) {
-    var i,
+function generateframeDataPoints(size,read,write,onephase_inc) {
+    var i,onephase=0,
         arr = [];
+        if(size==3)
+        onephase=2;
         if(write==1)
-    for (i = 0; i < 2*size-1; i++) {
-      if((i<=4)||(i>(size+1)))
+    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+      if((i<=4)||(i>(size+1+onephase)))
         arr.push({
             y:12
         });
-        else if((i>=5)&&(i<=(size+1)))
+        else if((i>=5)&&(i<=(size+1+onephase)))
         {arr.push({
             y:11
         });
@@ -175,12 +177,12 @@ function generateframeDataPoints(size,read,write) {
 
     }
     else if(read==1)
-    for (i = 0; i < 2*size-1; i++) {
-      if((i<=4)||(i>(size+3)))
+    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+      if((i<=4)||(i>(size+3+onephase)))
         arr.push({
             y:12
         });
-        else if((i>=5)&&(i<=(size+3)))
+        else if((i>=5)&&(i<=(size+3+onephase)))
         {arr.push({
             y:11
         });
@@ -195,29 +197,30 @@ function generateframeDataPoints(size,read,write) {
 
 
 
-function generatetrdyDataPoints(size,read,write) {
-    var i,
+function generatetrdyDataPoints(size,read,write,onephase_inc) {
+    var i,onephase=0,
         arr = [];
-
+if(size==3)
+onephase=2;
   if(write==1)
-    for (i = 0; i < 2*size-1; i++) {
-      if((i<=6)||(i>(size+3)))
+    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+      if((i<=6)||(i>(size+3+onephase)))
         arr.push({
             y:4
         });
-        else if((i>=7)&&(i<=(size+3)))
+        else if((i>=7)&&(i<=(size+3+onephase)))
         {arr.push({
             y:3
         });
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size-1; i++) {
-    if((i<=8)||(i>(size+5)))
+  for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    if((i<=8)||(i>(size+5+onephase)))
       arr.push({
           y:4
       });
-      else if((i>=9)&&(i<=(size+5)))
+      else if((i>=9)&&(i<=(size+5+onephase)))
       {arr.push({
           y:3
       });
@@ -237,17 +240,18 @@ else if (read==1) {
 
 
 
-function generateirdyDataPoints(size,read,write) {
-    var i,
+function generateirdyDataPoints(size,read,write,onephase_inc) {
+    var i,onephase=0,
         arr = [];
-
+if(size==3)
+onephase=2;
       if(write==1)
-    for (i = 0; i < 2*size-1; i++) {
-      if((i<=6)||(i>(size+3)))
+    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+      if((i<=6)||(i>(size+3+onephase)))
         arr.push({
             y:6
         });
-        else if((i>=7)&&(i<=(size+3)))
+        else if((i>=7)&&(i<=(size+3+onephase)))
         {arr.push({
             y:5
         });
@@ -255,12 +259,12 @@ function generateirdyDataPoints(size,read,write) {
 
     }
     else if(read==1)
-    for (i = 0; i < 2*size-1; i++) {
-      if((i<=6)||(i>(size+5)))
+    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+      if((i<=6)||(i>(size+5+onephase)))
         arr.push({
             y:6
         });
-        else if((i>=7)&&(i<=(size+5)))
+        else if((i>=7)&&(i<=(size+5+onephase)))
         {arr.push({
             y:5
         });
@@ -271,29 +275,30 @@ function generateirdyDataPoints(size,read,write) {
 }
 
 
-function generatedevselDataPoints(size,read,write) {
-    var i,
+function generatedevselDataPoints(size,read,write,onephase_inc) {
+    var i,onephase=0,
         arr = [];
-
+if(size==3)
+onephase=2;
   if(write==1)
-    for (i = 0; i < 2*size-1; i++) {
-      if((i<=6)||(i>(size+3)))
+    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+      if((i<=6)||(i>(size+3+onephase)))
         arr.push({
             y:2
         });
-        else if((i>=7)&&(i<=(size+3)))
+        else if((i>=7)&&(i<=(size+3+onephase)))
         {arr.push({
             y:1
         });
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size-1; i++) {
-    if((i<=8)||(i>(size+5)))
+  for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    if((i<=8)||(i>(size+5+onephase)))
       arr.push({
           y:2
       });
-      else if((i>=9)&&(i<=(size+5)))
+      else if((i>=9)&&(i<=(size+5+onephase)))
       {arr.push({
           y:1
       });
@@ -402,7 +407,7 @@ var size=0;
 var lastplace=[0,0,0];
 var i;
 var j;
-
+var onephase_inc=0;
 
 
 
@@ -549,20 +554,25 @@ clockDataPoints.push({
     y:2
 });
 };*/
+if(numberoftransaction==1)
+onephase_inc=4;
+else {
+  onephase_inc=0;
+}
 size=numberoftransaction*3;
  //size+=numberoftransaction*3;
 //var sizewidth=numberoftransaction*1080;
-var arr1= generateclockDataPoints(size,26,25);
-var arr2= generatereqDataPoints(1,master1,master2,master3,size);
-var arr3= generatereqDataPoints(2,master1,master2,master3,size);
-var arr4= generatereqDataPoints(3,master1,master2,master3,size);
-var arr5= generategntDataPoints(1,master1_gnt,master2_gnt,master3_gnt,size);
-var arr6= generategntDataPoints(2,master1_gnt,master2_gnt,master3_gnt,size);;
-var arr7= generategntDataPoints(3,master1_gnt,master2_gnt,master3_gnt,size);
-var arr8= generateframeDataPoints(size,read,write);
-var arr9= generateirdyDataPoints(size,read,write);
-var arr10= generatetrdyDataPoints(size,read,write);
-var arr11= generatedevselDataPoints(size,read,write);
+var arr1= generateclockDataPoints(size,26,25,onephase_inc);
+var arr2= generatereqDataPoints(1,master1,master2,master3,size,onephase_inc);
+var arr3= generatereqDataPoints(2,master1,master2,master3,size,onephase_inc);
+var arr4= generatereqDataPoints(3,master1,master2,master3,size,onephase_inc);
+var arr5= generategntDataPoints(1,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc);
+var arr6= generategntDataPoints(2,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc);
+var arr7= generategntDataPoints(3,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc);
+var arr8= generateframeDataPoints(size,read,write,onephase_inc);
+var arr9= generateirdyDataPoints(size,read,write,onephase_inc);
+var arr10= generatetrdyDataPoints(size,read,write,onephase_inc);
+var arr11= generatedevselDataPoints(size,read,write,onephase_inc);
 //arrayA=arrayA.concat(arrayB);
   clockDataPoints =clockDataPoints.concat(arr1);
   REQADataPoints =REQADataPoints.concat(arr2);
