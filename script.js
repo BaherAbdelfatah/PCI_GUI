@@ -1,7 +1,7 @@
 function generateclockDataPoints(size,max,min) {
     var i,
         arr = [];
-    for (i = 0; i < size+6; i++) {
+    for (i = 0; i < size; i++) {
         arr.push({
             y:max
         });
@@ -20,7 +20,7 @@ master1=m1;
 master2=m2;
 master3=m3;
   if(index==1)
-    for (i = 0; i < 2*size; i++) {
+    for (i = 0; i < 2*size-3; i++) {
       if(flag==1)
         arr.push({
             y:25-index
@@ -36,7 +36,7 @@ master1=0;
         }
     }
 else if(index==2)
-      for (i = 0; i < 2*size; i++) {
+      for (i = 0; i < 2*size-3; i++) {
         if(flag==1)
           arr.push({
               y:25-index-1
@@ -52,7 +52,7 @@ else if(index==2)
           }
       }
 else if(index==3)
-        for (i = 0; i < 2*size; i++) {
+        for (i = 0; i < 2*size-3; i++) {
           if(flag==1)
             arr.push({
                 y:25-index-2
@@ -95,7 +95,7 @@ master1=m1;
 master2=m2;
 master3=m3;
   if(index==1)
-    for (i = 0; i < 2*size; i++) {
+    for (i = 0; i < 2*size-3; i++) {
       if(flag==1)
         arr.push({
             y:19-index
@@ -111,7 +111,7 @@ master1=0;
         }
     }
 else if(index==2)
-      for (i = 0; i < 2*size; i++) {
+      for (i = 0; i < 2*size-3; i++) {
         if(flag==1)
           arr.push({
               y:19-index-1
@@ -127,7 +127,7 @@ else if(index==2)
           }
       }
 else if(index==3)
-        for (i = 0; i < 2*size; i++) {
+        for (i = 0; i < 2*size-3; i++) {
           if(flag==1)
             arr.push({
                 y:19-index-2
@@ -158,15 +158,29 @@ else if(index==3)
 
 
 
-function generateframeDataPoints(size) {
+function generateframeDataPoints(size,read,write) {
     var i,
         arr = [];
-    for (i = 0; i < 2*size; i++) {
+        if(write==1)
+    for (i = 0; i < 2*size-2; i++) {
       if((i<=4)||(i>(size+1)))
         arr.push({
             y:12
         });
         else if((i>=5)&&(i<=(size+1)))
+        {arr.push({
+            y:11
+        });
+          }
+
+    }
+    else if(read==1)
+    for (i = 0; i < 2*size-2; i++) {
+      if((i<=4)||(i>(size+3)))
+        arr.push({
+            y:12
+        });
+        else if((i>=5)&&(i<=(size+3)))
         {arr.push({
             y:11
         });
@@ -186,7 +200,7 @@ function generatetrdyDataPoints(size,read,write) {
         arr = [];
 
   if(write==1)
-    for (i = 0; i < 2*size; i++) {
+    for (i = 0; i < 2*size-2; i++) {
       if((i<=6)||(i>(size+3)))
         arr.push({
             y:4
@@ -198,7 +212,7 @@ function generatetrdyDataPoints(size,read,write) {
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size; i++) {
+  for (i = 0; i < 2*size-2; i++) {
     if((i<=8)||(i>(size+5)))
       arr.push({
           y:4
@@ -223,10 +237,12 @@ else if (read==1) {
 
 
 
-function generateirdyDataPoints(size) {
+function generateirdyDataPoints(size,read,write) {
     var i,
         arr = [];
-    for (i = 0; i < 2*size; i++) {
+
+      if(write==1)
+    for (i = 0; i < 2*size-2; i++) {
       if((i<=6)||(i>(size+3)))
         arr.push({
             y:6
@@ -238,7 +254,19 @@ function generateirdyDataPoints(size) {
           }
 
     }
+    else if(read==1)
+    for (i = 0; i < 2*size-2; i++) {
+      if((i<=6)||(i>(size+5)))
+        arr.push({
+            y:6
+        });
+        else if((i>=7)&&(i<=(size+5)))
+        {arr.push({
+            y:5
+        });
+          }
 
+    }
     return arr;
 }
 
@@ -248,7 +276,7 @@ function generatedevselDataPoints(size,read,write) {
         arr = [];
 
   if(write==1)
-    for (i = 0; i < 2*size; i++) {
+    for (i = 0; i < 2*size-2; i++) {
       if((i<=6)||(i>(size+3)))
         arr.push({
             y:2
@@ -260,7 +288,7 @@ function generatedevselDataPoints(size,read,write) {
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size; i++) {
+  for (i = 0; i < 2*size-2; i++) {
     if((i<=8)||(i>(size+5)))
       arr.push({
           y:2
@@ -288,38 +316,6 @@ else if (read==1) {
 
 $(document).ready(function(){
 //  function generateDataPoints(size);
-
-    $("#dev1Initiator").click(function(){
-      if(    ($('#dev2Initiator').is(':checked'))  ||  ($('#dev3Initiator').is(':checked'))   )
-    {
-      alert("Only One Initiator");
-     document.getElementById("dev1Initiator").checked = false;
-     document.getElementById("dev2Initiator").checked = false;
-     document.getElementById("dev3Initiator").checked = false;
-   }
-
-     });
-   $("#dev2Initiator").click(function(){
-     if(    ($('#dev1Initiator').is(':checked'))  ||  ($('#dev3Initiator').is(':checked'))   )
-   {
-     alert("Only One Initiator");
-    document.getElementById("dev1Initiator").checked = false;
-    document.getElementById("dev2Initiator").checked = false;
-    document.getElementById("dev3Initiator").checked = false;
-  }
-
-
-    });
-  $("#dev3Initiator").click(function(){
-    if(    ($('#dev1Initiator').is(':checked'))  ||  ($('#dev2Initiator').is(':checked'))   )
-  {
-    alert("Only One Initiator");
-   document.getElementById("dev1Initiator").checked = false;
-   document.getElementById("dev2Initiator").checked = false;
-   document.getElementById("dev3Initiator").checked = false;
- }
-
-    });
 
 
     $("#dev1Target").click(function(){
@@ -391,7 +387,18 @@ $(document).ready(function(){
 
 
 
-
+var clockDataPoints=[];
+var REQADataPoints=[];
+var REQBDataPoints=[];
+var REQCDataPoints=[];
+var GNTADataPoints=[];
+var GNTBDataPoints=[];
+var GNTCDataPoints=[];
+var FRAMEDataPoints=[];
+var IRDYDataPoints=[];
+var TRDYDataPoints=[];
+var DEVSELDataPoints=[];
+var size=0;
 
 
 
@@ -400,7 +407,7 @@ $(document).ready(function(){
 
 
 $("#start").click(function () {
-var target1,target2,target3,master1,master2,master3,read,write;
+var target1,target2,target3,master1,master2,master3,master1_gnt,master2_gnt,master3_gnt,read,write;
 var numberoftransaction=$("#numberoftransaction").val();
 if(    ($('#dev1Target').is(':checked')) )
 target1=1;
@@ -434,6 +441,17 @@ if(    ($('#transactiontypeRead').is(':checked')) )
 read=1;
 else
 read=0;
+/////Parity
+master1_gnt=master1;
+master2_gnt=master2;
+master3_gnt=master3;
+if(master1_gnt==1)
+{
+  master2_gnt=0;
+  master3_gnt=0;
+}
+else if(master2_gnt==1)
+  master3_gnt=0;
 
 //////////////////////////////////
 var c=0;
@@ -511,20 +529,32 @@ clockDataPoints.push({
     y:2
 });
 };*/
-var size=numberoftransaction*3;
+size=numberoftransaction*3;
+ //size+=numberoftransaction*3;
 //var sizewidth=numberoftransaction*1080;
- var clockDataPoints = generateclockDataPoints(size,26,25);
-//document.getElementById("chartContainer").style.width = sizewidth ;
- var REQADataPoints =generatereqDataPoints(1,master1,master2,master3,size);
- var REQBDataPoints =generatereqDataPoints(2,master1,master2,master3,size);
- var REQCDataPoints =generatereqDataPoints(3,master1,master2,master3,size);
- var GNTADataPoints =generategntDataPoints(1,master1,master2,master3,size);
- var GNTBDataPoints =generategntDataPoints(2,master1,master2,master3,size);
- var GNTCDataPoints =generategntDataPoints(3,master1,master2,master3,size);
- var FRAMEDataPoints =generateframeDataPoints(size);
- var IRDYDataPoints =generateirdyDataPoints(size);
- var TRDYDataPoints =generatetrdyDataPoints(size,read,write);
- var DEVSELDataPoints =generatedevselDataPoints(size,read,write);
+var arr1= generateclockDataPoints(size,26,25);
+var arr2= generatereqDataPoints(1,master1,master2,master3,size);
+var arr3= generatereqDataPoints(2,master1,master2,master3,size);
+var arr4= generatereqDataPoints(3,master1,master2,master3,size);
+var arr5= generategntDataPoints(1,master1_gnt,master2_gnt,master3_gnt,size);
+var arr6= generategntDataPoints(2,master1_gnt,master2_gnt,master3_gnt,size);;
+var arr7= generategntDataPoints(3,master1_gnt,master2_gnt,master3_gnt,size);
+var arr8= generateframeDataPoints(size,read,write);
+var arr9= generateirdyDataPoints(size,read,write);
+var arr10= generatetrdyDataPoints(size,read,write);
+var arr11= generatedevselDataPoints(size,read,write);
+//arrayA=arrayA.concat(arrayB);
+  clockDataPoints =clockDataPoints.concat(arr1);
+  REQADataPoints =REQADataPoints.concat(arr2);
+  REQBDataPoints =REQBDataPoints.concat(arr3);
+  REQCDataPoints =REQCDataPoints.concat(arr4);
+  GNTADataPoints =GNTADataPoints.concat(arr5);
+  GNTBDataPoints =GNTBDataPoints.concat(arr6);
+  GNTCDataPoints =GNTCDataPoints.concat(arr7);
+  FRAMEDataPoints =FRAMEDataPoints.concat(arr8);
+  IRDYDataPoints =IRDYDataPoints.concat(arr9);
+  TRDYDataPoints =TRDYDataPoints.concat(arr10);
+  DEVSELDataPoints =DEVSELDataPoints.concat(arr11);
 var chart = new CanvasJS.Chart("chartContainer", {
  animationEnabled: true,
  theme: "light2",
