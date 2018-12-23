@@ -20,7 +20,7 @@ master1=m1;
 master2=m2;
 master3=m3;
   if(index==1)
-    for (i = 0; i < 2*size-3; i++) {
+    for (i = 0; i < 2*size-2; i++) {
       if(flag==1)
         arr.push({
             y:25-index
@@ -36,7 +36,7 @@ master1=0;
         }
     }
 else if(index==2)
-      for (i = 0; i < 2*size-3; i++) {
+      for (i = 0; i < 2*size-2; i++) {
         if(flag==1)
           arr.push({
               y:25-index-1
@@ -52,7 +52,7 @@ else if(index==2)
           }
       }
 else if(index==3)
-        for (i = 0; i < 2*size-3; i++) {
+        for (i = 0; i < 2*size-2; i++) {
           if(flag==1)
             arr.push({
                 y:25-index-2
@@ -95,7 +95,7 @@ master1=m1;
 master2=m2;
 master3=m3;
   if(index==1)
-    for (i = 0; i < 2*size-3; i++) {
+    for (i = 0; i < 2*size-2; i++) {
       if(flag==1)
         arr.push({
             y:19-index
@@ -111,7 +111,7 @@ master1=0;
         }
     }
 else if(index==2)
-      for (i = 0; i < 2*size-3; i++) {
+      for (i = 0; i < 2*size-2; i++) {
         if(flag==1)
           arr.push({
               y:19-index-1
@@ -127,7 +127,7 @@ else if(index==2)
           }
       }
 else if(index==3)
-        for (i = 0; i < 2*size-3; i++) {
+        for (i = 0; i < 2*size-2; i++) {
           if(flag==1)
             arr.push({
                 y:19-index-2
@@ -162,7 +162,7 @@ function generateframeDataPoints(size,read,write) {
     var i,
         arr = [];
         if(write==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size-1; i++) {
       if((i<=4)||(i>(size+1)))
         arr.push({
             y:12
@@ -175,7 +175,7 @@ function generateframeDataPoints(size,read,write) {
 
     }
     else if(read==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size-1; i++) {
       if((i<=4)||(i>(size+3)))
         arr.push({
             y:12
@@ -200,7 +200,7 @@ function generatetrdyDataPoints(size,read,write) {
         arr = [];
 
   if(write==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size-1; i++) {
       if((i<=6)||(i>(size+3)))
         arr.push({
             y:4
@@ -212,7 +212,7 @@ function generatetrdyDataPoints(size,read,write) {
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size-2; i++) {
+  for (i = 0; i < 2*size-1; i++) {
     if((i<=8)||(i>(size+5)))
       arr.push({
           y:4
@@ -242,7 +242,7 @@ function generateirdyDataPoints(size,read,write) {
         arr = [];
 
       if(write==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size-1; i++) {
       if((i<=6)||(i>(size+3)))
         arr.push({
             y:6
@@ -255,7 +255,7 @@ function generateirdyDataPoints(size,read,write) {
 
     }
     else if(read==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size-1; i++) {
       if((i<=6)||(i>(size+5)))
         arr.push({
             y:6
@@ -276,7 +276,7 @@ function generatedevselDataPoints(size,read,write) {
         arr = [];
 
   if(write==1)
-    for (i = 0; i < 2*size-2; i++) {
+    for (i = 0; i < 2*size-1; i++) {
       if((i<=6)||(i>(size+3)))
         arr.push({
             y:2
@@ -288,7 +288,7 @@ function generatedevselDataPoints(size,read,write) {
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size-2; i++) {
+  for (i = 0; i < 2*size-1; i++) {
     if((i<=8)||(i>(size+5)))
       arr.push({
           y:2
