@@ -1,73 +1,87 @@
-function generateclockDataPoints(size,max,min,onephase_inc) {
-    var i,
-        arr = [];
-    for (i = 0; i < size+onephase_inc; i++) {
+function generateclockDataPoints(size,max,min,onephase_inc,read,write) {
+    var i,onephase=0,arr = [],toggle=1;
+    if(size==3)
+    onephase=2;
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+if(toggle==1)
         arr.push({
             y:max
         });
+else if(toggle==-1)
         arr.push({
             y:min
         });
+        toggle=-toggle;
     }
+
     return arr;
 }
 
 
-function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc) {
-    var i,flag=1,master1,master2,master3,
-        arr = [];
-master1=m1;
-master2=m2;
-master3=m3;
-  if(index==1)
-    for (i = 0; i < 2*size+2+onephase_inc; i++) {
-      if(flag==1)
+function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
+    var i,onephase=0,arr = [];
+    if(size==3)
+    onephase=2;
+  if((index==1)&&(m1==1))
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+      if((i<1)||(i>(size+onephase-1)))
         arr.push({
             y:25-index
         });
-        if(master1==1)
-        {arr.push({
+      else if(i>=1)
+        arr.push({
             y:24-index
         });
-          flag=0;}
-          if(i==3)
-        { flag=1;
-master1=0;
-        }
     }
-else if(index==2)
-      for (i = 0; i < 2*size+2+onephase_inc; i++) {
-        if(flag==1)
-          arr.push({
-              y:25-index-1
-          });
-          if(master2==1)
-        {  arr.push({
-              y:24-index-1
-          });
-            flag=0;}
-            if(i==3)
-          { flag=1;
-  master2=0;
-          }
-      }
-else if(index==3)
-        for (i = 0; i < 2*size+2+onephase_inc; i++) {
-          if(flag==1)
-            arr.push({
-                y:25-index-2
-            });
-            if(master3==1)
-          {  arr.push({
-                y:24-index-2
-            });
-              flag=0;}
-              if(i==3)
-            { flag=1;
-    master3=0;
-            }
-        }
-
+    else if((index==1)&&(m1==0))
+    {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++)
+    {
+    arr.push({
+        y:25-index
+    });
+    }
+    }
+else   if((index==2)&&(m2==1))
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+    if((i<1)||(i>(size+onephase-1)))
+        arr.push({
+            y:24-index
+        });
+      else if(i>=1)
+        arr.push({
+            y:23-index
+        });
+    }
+else if((index==2)&&(m2==0))
+{
+for (i = 0; i < 2*size+3+onephase_inc-2*write; i++)
+{
+arr.push({
+    y:24-index
+});
+}
+}
+else   if((index==3)&&(m3==1))
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+      if((i<1)||(i>(size+onephase-1)))
+        arr.push({
+            y:23-index
+        });
+      else if(i>=1)
+        arr.push({
+            y:22-index
+        });
+    }
+    else if((index==3)&&(m3==0))
+    {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++)
+    {
+    arr.push({
+        y:23-index
+    });
+    }
+    }
 
 
 
@@ -86,66 +100,75 @@ else if(index==3)
 
 
 
+//19 18
+//18 17
+//17 16
 
+function generategntDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
+    var i,onephase=0,arr = [];
 
-function generategntDataPoints(index,m1,m2,m3,size,onephase_inc) {
-    var i,flag=1,master1,master2,master3,
-        arr = [];
-master1=m1;
-master2=m2;
-master3=m3;
-  if(index==1)
-    for (i = 0; i < 2*size+2+onephase_inc; i++) {
-      if(flag==1)
-        arr.push({
-            y:19-index
-        });
-        if((master1==1)&&(i>=2))
-        {arr.push({
-            y:18-index
-        });
-          flag=0;}
-          if(i==5)
-        { flag=1;
-master1=0;
-        }
-    }
-else if(index==2)
-      for (i = 0; i < 2*size+2+onephase_inc; i++) {
-        if(flag==1)
+    if(size==3)
+    onephase=2;
+    if((index==1)&&(m1==1))
+      for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+        if((i<3)||(i>(size+onephase+1)))
           arr.push({
-              y:19-index-1
+              y:19-index
           });
-          if((master2==1)&&(i>=1))
-        {  arr.push({
-              y:18-index-1
+        else if(i>=3)
+          arr.push({
+              y:18-index
           });
-            flag=0;}
-            if(i==3)
-          { flag=1;
-  master2=0;
-          }
       }
-else if(index==3)
-        for (i = 0; i < 2*size+2+onephase_inc; i++) {
-          if(flag==1)
-            arr.push({
-                y:19-index-2
-            });
-            if((master3==1)&&(i>=1))
-          {  arr.push({
-                y:18-index-2
-            });
-              flag=0;}
-              if(i==3)
-            { flag=1;
-    master3=0;
-            }
-        }
-
-
-
-
+      else if((index==1)&&(m1==0))
+      {
+      for (i = 0; i < 2*size+3+onephase_inc-2*write; i++)
+      {
+      arr.push({
+          y:19-index
+      });
+      }
+      }
+  else   if((index==2)&&(m2==1))
+      for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+        if((i<3)||(i>(size+onephase+1)))
+          arr.push({
+              y:18-index
+          });
+        else if(i>=3)
+          arr.push({
+              y:17-index
+          });
+      }
+  else if((index==2)&&(m2==0))
+  {
+  for (i = 0; i < 2*size+3+onephase_inc-2*write; i++)
+  {
+  arr.push({
+      y:18-index
+  });
+  }
+  }
+  else   if((index==3)&&(m3==1))
+      for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
+  if((i<3)||(i>(size+onephase+1)))
+          arr.push({
+              y:17-index
+          });
+        else if(i>=3)
+          arr.push({
+              y:16-index
+          });
+      }
+      else if((index==3)&&(m3==0))
+      {
+      for (i = 0; i < 2*size+3+onephase_inc-2*write; i++)
+      {
+      arr.push({
+          y:17-index
+      });
+      }
+      }
 
 
     return arr;
@@ -164,7 +187,7 @@ function generateframeDataPoints(size,read,write,onephase_inc) {
         if(size==3)
         onephase=2;
         if(write==1)
-    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
       if((i<=4)||(i>(size+1+onephase)))
         arr.push({
             y:12
@@ -177,7 +200,7 @@ function generateframeDataPoints(size,read,write,onephase_inc) {
 
     }
     else if(read==1)
-    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
       if((i<=4)||(i>(size+3+onephase)))
         arr.push({
             y:12
@@ -203,7 +226,7 @@ function generatetrdyDataPoints(size,read,write,onephase_inc) {
 if(size==3)
 onephase=2;
   if(write==1)
-    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
       if((i<=6)||(i>(size+3+onephase)))
         arr.push({
             y:4
@@ -215,7 +238,7 @@ onephase=2;
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size+3+onephase_inc; i++) {
+  for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
     if((i<=8)||(i>(size+5+onephase)))
       arr.push({
           y:4
@@ -246,7 +269,7 @@ function generateirdyDataPoints(size,read,write,onephase_inc) {
 if(size==3)
 onephase=2;
       if(write==1)
-    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
       if((i<=6)||(i>(size+3+onephase)))
         arr.push({
             y:6
@@ -259,7 +282,7 @@ onephase=2;
 
     }
     else if(read==1)
-    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
       if((i<=6)||(i>(size+5+onephase)))
         arr.push({
             y:6
@@ -281,7 +304,7 @@ function generatedevselDataPoints(size,read,write,onephase_inc) {
 if(size==3)
 onephase=2;
   if(write==1)
-    for (i = 0; i < 2*size+3+onephase_inc; i++) {
+    for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
       if((i<=6)||(i>(size+3+onephase)))
         arr.push({
             y:2
@@ -293,7 +316,7 @@ onephase=2;
           }
     }
 else if (read==1) {
-  for (i = 0; i < 2*size+3+onephase_inc; i++) {
+  for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
     if((i<=8)||(i>(size+5+onephase)))
       arr.push({
           y:2
@@ -440,7 +463,7 @@ var onephase_inc=0;
 
 $("#start").click(function () {
 var target1,target2,target3,master1,master2,master3,master1_gnt,master2_gnt,master3_gnt,read,write;
-var numberoftransaction=$("#numberoftransaction").val();
+var numberofphases=$("#numberofphases").val();
 if(    ($('#dev1Target').is(':checked')) )
 target1=1;
 else
@@ -521,34 +544,37 @@ word_read="CCCCCCCC";
 }
 if(write==1)
 {
-for(c=1;c<=numberoftransaction;c++)
+for(c=1;c<=numberofphases;c++)
 {
   i=lastplace[t-1]+c;
 document.getElementById("d"+t+"-w"+i).innerHTML = word_write;
 document.getElementById("d"+t+"-w"+i).style.fontSize = "large";
-//if(c==numberoftransaction)
-
+//if(c==numberofphases)
+if(i>=10)
+break;
 }
-for(c=1;c<=numberoftransaction;c++)
+for(c=1;c<=numberofphases;c++)
 lastplace[t-1]++;
 }
-if(lastplace[t-1]==10)
+if(lastplace[t-1]>=10)
 lastplace[t-1]=0;
 
 
 if(read==1)
 {
-for(e=1;e<=numberoftransaction;e++)
+for(e=1;e<=numberofphases;e++)
 {
   j=lastplace[m-1]+e;
 document.getElementById("d"+m+"-w"+j).innerHTML = word_read;
 document.getElementById("d"+m+"-w"+j).style.fontSize = "large";
+if(j>=10)
+break;
 }
-for(e=1;e<=numberoftransaction;e++)
+for(e=1;e<=numberofphases;e++)
 lastplace[m-1]++;
 }
 
-if(lastplace[m-1]==10)
+if(lastplace[m-1]>=10)
 lastplace[m-1]=0;
 /*document.getElementById("d1-w2").innerHTML = "AAAAAAAA";
 document.getElementById("d1-w2").style.fontSize = "large";
@@ -569,7 +595,7 @@ document.getElementById("d1-w9").style.fontSize = "large";
 document.getElementById("d1-w10").innerHTML = "AAAAAAAA";
 document.getElementById("d1-w10").style.fontSize = "large";*/
 
-  alert("Value: " + numberoftransaction + "target1: " + target1 + "target2: " + target2 + "target3: " + target3 + "master1: " + master1 + "master2: " + master2 + "master3: " + master3 + "read: " + read + "write: " + write);
+  alert("Value: " + numberofphases + "target1: " + target1 + "target2: " + target2 + "target3: " + target3 + "master1: " + master1 + "master2: " + master2 + "master3: " + master3 + "read: " + read + "write: " + write);
   var count=0;
 /*   clockDataPoints=[];
   for (i = 0; i < 10; i++) {
@@ -580,21 +606,21 @@ clockDataPoints.push({
     y:2
 });
 };*/
-if(numberoftransaction==1)
+if(numberofphases==1)
 onephase_inc=4;
 else {
   onephase_inc=0;
 }
-size=numberoftransaction*3;
- //size+=numberoftransaction*3;
-//var sizewidth=numberoftransaction*1080;
-var arr1= generateclockDataPoints(size,26,25,onephase_inc);
-var arr2= generatereqDataPoints(1,master1,master2,master3,size,onephase_inc);
-var arr3= generatereqDataPoints(2,master1,master2,master3,size,onephase_inc);
-var arr4= generatereqDataPoints(3,master1,master2,master3,size,onephase_inc);
-var arr5= generategntDataPoints(1,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc);
-var arr6= generategntDataPoints(2,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc);
-var arr7= generategntDataPoints(3,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc);
+size=numberofphases*3;
+ //size+=numberofphases*3;
+//var sizewidth=numberofphases*1080;
+var arr1= generateclockDataPoints(size,26,25,onephase_inc,read,write);
+var arr2= generatereqDataPoints(1,master1,master2,master3,size,onephase_inc,read,write);
+var arr3= generatereqDataPoints(2,master1,master2,master3,size,onephase_inc,read,write);
+var arr4= generatereqDataPoints(3,master1,master2,master3,size,onephase_inc,read,write);
+var arr5= generategntDataPoints(1,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc,read,write);
+var arr6= generategntDataPoints(2,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc,read,write);
+var arr7= generategntDataPoints(3,master1_gnt,master2_gnt,master3_gnt,size,onephase_inc,read,write);
 var arr8= generateframeDataPoints(size,read,write,onephase_inc);
 var arr9= generateirdyDataPoints(size,read,write,onephase_inc);
 var arr10= generatetrdyDataPoints(size,read,write,onephase_inc);

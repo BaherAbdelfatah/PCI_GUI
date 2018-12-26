@@ -35,14 +35,14 @@
  top: 425px;
  left: 870px;
 }
-#numberoftransaction{
+#numberofphases{
   width: 80px;
   height: 38px;
   position: absolute;
  top: 425px;
  left: 770px;
 }
-#numberoftransactiontext{
+#numberofphasestext{
   position: absolute;
  top: 380px;
  left: 720px;
