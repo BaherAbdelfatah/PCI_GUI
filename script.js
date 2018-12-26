@@ -4,19 +4,18 @@ function generateclockDataPoints(size,max,min,onephase_inc,read,write) {
     onephase=2;
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
 if(toggle==1)
-        arr.push({
-            y:max
-        });
+        arr.push(
+            max
+        );
 else if(toggle==-1)
-        arr.push({
-            y:min
-        });
+        arr.push(
+            min
+        );
         toggle=-toggle;
     }
 
     return arr;
 }
-
 
 function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
     var i,onephase=0,arr = [];
@@ -24,7 +23,7 @@ function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
     onephase=2;
   if((index==1)&&(m1==1))
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
-      if((i<1)||(i>(4)))
+      if((i<1)||(i>(size+onephase-1)))
         arr.push({
             y:25-index
         });
@@ -44,7 +43,7 @@ function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
     }
 else   if((index==2)&&(m2==1))
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
-    if((i<1)||(i>(4)))
+    if((i<1)||(i>(size+onephase-1)))
         arr.push({
             y:24-index
         });
@@ -64,7 +63,7 @@ arr.push({
 }
 else   if((index==3)&&(m3==1))
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
-      if((i<1)||(i>(4)))
+      if((i<1)||(i>(size+onephase-1)))
         arr.push({
             y:23-index
         });
@@ -91,18 +90,6 @@ else   if((index==3)&&(m3==1))
 
 
 }
-
-
-
-
-
-
-
-
-
-//19 18
-//18 17
-//17 16
 
 function generategntDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
     var i,onephase=0,arr = [];
@@ -176,11 +163,6 @@ function generategntDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
 
 }
 
-
-
-
-
-
 function generateframeDataPoints(size,read,write,onephase_inc) {
     var i,onephase=0,
         arr = [];
@@ -215,10 +197,6 @@ function generateframeDataPoints(size,read,write,onephase_inc) {
 
     return arr;
 }
-
-
-
-
 
 function generatetrdyDataPoints(size,read,write,onephase_inc) {
     var i,onephase=0,
@@ -257,12 +235,6 @@ else if (read==1) {
     return arr;
 }
 
-
-
-
-
-
-
 function generateirdyDataPoints(size,read,write,onephase_inc) {
     var i,onephase=0,
         arr = [];
@@ -296,7 +268,6 @@ onephase=2;
     }
     return arr;
 }
-
 
 function generatedevselDataPoints(size,read,write,onephase_inc) {
     var i,onephase=0,
@@ -335,12 +306,30 @@ else if (read==1) {
     return arr;
 }
 
+function load(clk)
+{
+data = { signal : [
+  { name: "CLOCK",  wave: clk },
+  { name: "REQA ",  wave: "x.34.5x",   data: "head body tail" },
+  { name: "REQB", wave: "0.1..0." },
+  { name: " REQC ", wave: "0.1..0." },
+  { name: "GNTA", wave: "0.1..0." },
+  { name: "GNTB", wave: "0.1..0." },
+  { name: "GNTC", wave: "0.1..0." },
+  { name: "FRAME", wave: "0.1..0." },
+  { name: "A_D", wave: "0.1..0." },
+  { name: "C_BE", wave: "0.1..0." },
+  { name: "IRDY", wave: "0.1..0." },
+  { name: "TRDY", wave: "0.1..0." },
+  { name: "DEVSEL  ", wave: "0.1..0." },
+   
+]};
 
 
+document.querySelector('script[type="WaveDrom"]').innerHTML = JSON.stringify(data,null,2);;
 
-
-
-
+WaveDrom.ProcessAll();
+}
 
 $(document).ready(function(){
 //  function generateDataPoints(size);
@@ -576,36 +565,11 @@ lastplace[m-1]++;
 
 if(lastplace[m-1]>=10)
 lastplace[m-1]=0;
-/*document.getElementById("d1-w2").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w2").style.fontSize = "large";
-document.getElementById("d1-w3").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w3").style.fontSize = "large";
-document.getElementById("d1-w4").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w4").style.fontSize = "large";
-document.getElementById("d1-w5").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w5").style.fontSize = "large";
-document.getElementById("d1-w6").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w6").style.fontSize = "large";
-document.getElementById("d1-w7").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w7").style.fontSize = "large";
-document.getElementById("d1-w8").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w8").style.fontSize = "large";
-document.getElementById("d1-w9").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w9").style.fontSize = "large";
-document.getElementById("d1-w10").innerHTML = "AAAAAAAA";
-document.getElementById("d1-w10").style.fontSize = "large";*/
+
 
   alert("Value: " + numberofphases + "target1: " + target1 + "target2: " + target2 + "target3: " + target3 + "master1: " + master1 + "master2: " + master2 + "master3: " + master3 + "read: " + read + "write: " + write);
   var count=0;
-/*   clockDataPoints=[];
-  for (i = 0; i < 10; i++) {
-      clockDataPoints.push({
-          y:1
-});
-clockDataPoints.push({
-    y:2
-});
-};*/
+
 if(numberofphases==1)
 onephase_inc=4;
 else {
@@ -614,7 +578,7 @@ else {
 size=numberofphases*3;
  //size+=numberofphases*3;
 //var sizewidth=numberofphases*1080;
-var arr1= generateclockDataPoints(size,26,25,onephase_inc,read,write);
+var arr1= generateclockDataPoints(size,1,0,onephase_inc,read,write);
 var arr2= generatereqDataPoints(1,master1,master2,master3,size,onephase_inc,read,write);
 var arr3= generatereqDataPoints(2,master1,master2,master3,size,onephase_inc,read,write);
 var arr4= generatereqDataPoints(3,master1,master2,master3,size,onephase_inc,read,write);
@@ -626,18 +590,21 @@ var arr9= generateirdyDataPoints(size,read,write,onephase_inc);
 var arr10= generatetrdyDataPoints(size,read,write,onephase_inc);
 var arr11= generatedevselDataPoints(size,read,write,onephase_inc);
 //arrayA=arrayA.concat(arrayB);
-  clockDataPoints =clockDataPoints.concat(arr1);
-  REQADataPoints =REQADataPoints.concat(arr2);
-  REQBDataPoints =REQBDataPoints.concat(arr3);
-  REQCDataPoints =REQCDataPoints.concat(arr4);
-  GNTADataPoints =GNTADataPoints.concat(arr5);
-  GNTBDataPoints =GNTBDataPoints.concat(arr6);
-  GNTCDataPoints =GNTCDataPoints.concat(arr7);
-  FRAMEDataPoints =FRAMEDataPoints.concat(arr8);
-  IRDYDataPoints =IRDYDataPoints.concat(arr9);
-  TRDYDataPoints =TRDYDataPoints.concat(arr10);
-  DEVSELDataPoints =DEVSELDataPoints.concat(arr11);
-var chart = new CanvasJS.Chart("chartContainer", {
+  clockDataPoints =clockDataPoints.concat(arr1).join("");
+  REQADataPoints =REQADataPoints.concat(arr2).join("");
+  REQBDataPoints =REQBDataPoints.concat(arr3).join("");
+  REQCDataPoints =REQCDataPoints.concat(arr4).join("");
+  GNTADataPoints =GNTADataPoints.concat(arr5).join("");
+  GNTBDataPoints =GNTBDataPoints.concat(arr6).join("");
+  GNTCDataPoints =GNTCDataPoints.concat(arr7).join("");
+  FRAMEDataPoints =FRAMEDataPoints.concat(arr8).join("");
+  IRDYDataPoints =IRDYDataPoints.concat(arr9).join("");
+  TRDYDataPoints =TRDYDataPoints.concat(arr10).join("");
+  DEVSELDataPoints =DEVSELDataPoints.concat(arr11).join("");
+console.log(clockDataPoints);
+load(clockDataPoints);
+/*console.log(JSON.stringify(
+{
  animationEnabled: true,
  theme: "light2",
  title:{
@@ -761,8 +728,8 @@ dataPoints:GNTADataPoints
 
 
  ]
-});
+}
+, null, 2));*/
 
-chart.render();
 });
     });
