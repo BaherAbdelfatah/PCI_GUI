@@ -10,8 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script src="script.js"></script>
-  <script src="http://wavedrom.com/skins/default.js"></script>
-  <script src="http://wavedrom.com/WaveDrom.js"></script>
+
 </head>
 <body>
   <form>
@@ -104,7 +103,7 @@
 <g>
   <text id="numberofphasestext" font-family="Verdana" fill="gray">Number of Dataphases</text>
  <input type="text" id="numberofphases" name="numberofphases" >
- <input id="start" type="button" onclick="myFunction();WaveDrom.ProcessAll();" value="Start">
+ <input id="start" type="button" onclick="myFunction()" value="Start">
  <form>
  <div class="radio" id="transactiontype">
        <label><input type="radio" name="optradio" id="transactiontypeWrite">Write</label>
@@ -112,15 +111,7 @@
  </div>
 </form>
 </g>
-
-<script id="wvscript" type="WaveDrom">
-{ signal : [
-  { name: "clk",  wave: "p......" },
-  { name: "edited",  wave: "x.34.5x",   data: "head body tail" },
-  { name: "wire", wave: "0.1..0." },
-]}
-
-</script>
+<div id="chartContainer" style="height: 1200px; width: 100%;"></div>
 
 </body>
 </html>
