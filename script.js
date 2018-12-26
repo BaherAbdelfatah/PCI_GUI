@@ -343,6 +343,7 @@ $(document).ready(function(){
   }
 
     });
+
   $("#dev3Target").click(function(){
     if(    ($('#dev1Target').is(':checked'))  ||  ($('#dev2Target').is(':checked'))   )
   {
@@ -353,13 +354,38 @@ $(document).ready(function(){
  }
 
 
+});
 
+ $("#dev1Initiator").click(function(){
+   if(    ($('#dev2Initiator').is(':checked'))  &&  ($('#dev3Initiator').is(':checked'))   )
+ {
+   alert("Max two Initiators");
+  document.getElementById("dev1Initiator").checked = false;
+  document.getElementById("dev2Initiator").checked = false;
+  document.getElementById("dev3Initiator").checked = false;
+}
 
+  });
+  $("#dev2Initiator").click(function(){
+    if(    ($('#dev1Initiator').is(':checked'))  &&  ($('#dev3Initiator').is(':checked'))   )
+  {
+    alert("Max two Initiators");
+   document.getElementById("dev1Initiator").checked = false;
+   document.getElementById("dev2Initiator").checked = false;
+   document.getElementById("dev3Initiator").checked = false;
+ }
 
+   });
+   $("#dev3Initiator").click(function(){
+     if(    ($('#dev1Initiator').is(':checked'))  &&  ($('#dev2Initiator').is(':checked'))   )
+   {
+     alert("Max two Initiators");
+    document.getElementById("dev1Initiator").checked = false;
+    document.getElementById("dev2Initiator").checked = false;
+    document.getElementById("dev3Initiator").checked = false;
+  }
 
-
-     });
-
+    });
 
 
 
