@@ -24,7 +24,7 @@ function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
     onephase=2;
   if((index==1)&&(m1==1))
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
-      if((i<1)||(i>(size+onephase-1)))
+      if((i<1)||(i>(4)))
         arr.push({
             y:25-index
         });
@@ -44,7 +44,7 @@ function generatereqDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
     }
 else   if((index==2)&&(m2==1))
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
-    if((i<1)||(i>(size+onephase-1)))
+    if((i<1)||(i>(4)))
         arr.push({
             y:24-index
         });
@@ -64,7 +64,7 @@ arr.push({
 }
 else   if((index==3)&&(m3==1))
     for (i = 0; i < 2*size+3+onephase_inc-2*write; i++) {
-      if((i<1)||(i>(size+onephase-1)))
+      if((i<1)||(i>(4)))
         arr.push({
             y:23-index
         });
