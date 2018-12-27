@@ -731,7 +731,7 @@ var arr11= generatedevselDataPoints(size,read,write,onephase_inc);
 var arr12 = generateadDataPoints(numberofphases);
 
 //arrayA=arrayA.concat(arrayB);
-  clockDataPoints =clockDataPoints.concat(arr1).join("");
+  clockDataPoints =smooth(clockDataPoints.concat(arr1) ).join("");
   REQADataPoints =smooth(REQADataPoints.concat(arr2)).join("");
   REQBDataPoints =smooth(REQBDataPoints.concat(arr3)).join("");
   REQCDataPoints =smooth(REQCDataPoints.concat(arr4)).join("");
@@ -748,9 +748,9 @@ var arr12 = generateadDataPoints(numberofphases);
   var signal_AD_labels ;
  // console.log(ADDataPoints); 
  if(read==1)
- {  signal_AD_labels = word_read + " " ;}
+ {  signal_AD_labels = word_write + " " ;}
 else
-{signal_AD_labels = word_write + " ";}
+{signal_AD_labels = word_read + " ";}
 
   var signal_AD_prefix =  word_write + " ";
   
