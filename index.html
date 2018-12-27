@@ -290,6 +290,8 @@ function generateadDataPoints(numberofphases)
 	
 	var arr = [],i;
 	arr.push("z.");
+	arr.push("=.");
+	
 	for(i=0; i <numberofphases;i++)
 	{arr.push("=..");}
 	arr.push("z");
@@ -745,8 +747,9 @@ var arr12 = generateadDataPoints(numberofphases);
   
   
  // console.log(ADDataPoints); 
-  var signal_AD_labels = word_read + " ";
-  signal_AD_labels = signal_AD_labels.repeat(numberofphases);
+  var signal_AD_labels = (read==1)? word _read + " " : word_write + " ";
+  var signal_AD_prefix =  word_write + " ";
+  signal_AD_labels = signal_AD_prefix + signal_AD_labels.repeat(numberofphases);
   
 load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints ,signal_AD_labels,ADDataPoints);
 WaveDrom.ProcessAll();
