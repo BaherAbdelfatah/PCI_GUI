@@ -745,10 +745,15 @@ var arr12 = generateadDataPoints(numberofphases);
   ADDataPoints = ADDataPoints.concat(arr12).join("");
   alert(ADDataPoints);
   
-  
+  var signal_AD_labels ;
  // console.log(ADDataPoints); 
-  var signal_AD_labels = (read==1)? word _read + " " : word_write + " ";
+ if(read==1)
+   signal_AD_labels = word _read + " " ;
+else
+signal_AD_labels = word_write + " ";
+
   var signal_AD_prefix =  word_write + " ";
+  
   signal_AD_labels = signal_AD_prefix + signal_AD_labels.repeat(numberofphases);
   
 load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints ,signal_AD_labels,ADDataPoints);
