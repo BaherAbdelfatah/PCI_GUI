@@ -742,12 +742,15 @@ var arr12 = generateadDataPoints(numberofphases);
   DEVSELDataPoints =smooth(DEVSELDataPoints.concat(arr11)).join("");
   ADDataPoints = ADDataPoints.concat(arr12).join("");
   
+  
+  
  // console.log(ADDataPoints); 
   var signal_AD_labels = word_read + " ";
   signal_AD_labels = signal_AD_labels.repeat(numberofphases);
   
 load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints ,signal_AD_labels,ADDataPoints);
 WaveDrom.ProcessAll();
+alert(ADDataPoints);
 
 
 
