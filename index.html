@@ -746,13 +746,18 @@ var arr12 = generateadDataPoints(numberofphases);
   alert(ADDataPoints);
   
   var signal_AD_labels ;
+  var signal_AD_prefix;
  // console.log(ADDataPoints); 
  if(read==1)
- {  signal_AD_labels = word_write + " " ;}
+ {  signal_AD_labels = word_read + " " ;
+signal_AD_prefix =  word_write + " ";
+}
 else
-{signal_AD_labels = word_read + " ";}
+{signal_AD_labels = word_write + " ";
+signal_AD_prefix =  word_read + " ";
+}
 
-  var signal_AD_prefix =  word_write + " ";
+   
   
   signal_AD_labels = signal_AD_prefix + signal_AD_labels.repeat(numberofphases);
   
