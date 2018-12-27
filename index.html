@@ -120,6 +120,10 @@
 
 
 <script>
+function wavinit()
+{
+WaveDrom.ProcessAll();
+}
 function generateclockDataPoints(size,max,min,onephase_inc,read,write) {
     var i,onephase=0,arr = [],toggle=1;
     if(size==3)
@@ -285,18 +289,6 @@ function generategntDataPoints(index,m1,m2,m3,size,onephase_inc,read,write) {
 
 }
 
-function generateadDataPoints(numberofphases)
-{
-	var arr = [],i;
-	arr.push("z.");
-	for(i=0; i <numberofdataphases;i++)
-	{arr.push("=..");}
-	arr.push("z");
-	
-	return arr;
-}
-
-
 function generateframeDataPoints(size,read,write,onephase_inc) {
     var i,onephase=0,
         arr = [];
@@ -440,8 +432,9 @@ else if (read==1) {
     return arr;
 }
 
+wavinit();
 
-function load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints,signal_AD_labels,ADDataPoints)
+function load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints)
 {
 data = { signal : [
   { name: "CLOCK",  wave: clockDataPoints },
@@ -452,8 +445,8 @@ data = { signal : [
   { name: "GNTB", wave: GNTBDataPoints },
   { name: "GNTC", wave: GNTCDataPoints  },
   { name: "FRAME", wave: FRAMEDataPoints },
-  { name: "A_D", wave: ADDataPoints ,data: signal_AD_labels},
-  { name: "C_BE", wave: DEVSELDataPoints},
+  { name: "A_D", wave: "x.34.5x" ,data: "head body tail"},
+  { name: "C_BE", wave: "0.1..0." },
   { name: "IRDY", wave: IRDYDataPoints },
   { name: "TRDY", wave:  TRDYDataPoints},
   { name: "DEVSEL  ", wave: DEVSELDataPoints },
@@ -576,7 +569,6 @@ var FRAMEDataPoints=[];
 var IRDYDataPoints=[];
 var TRDYDataPoints=[];
 var DEVSELDataPoints=[];
-var ADDataPoints = [];
 var size=0;
 var lastplace=[0,0,0];
 var i;
@@ -725,8 +717,6 @@ var arr8= generateframeDataPoints(size,read,write,onephase_inc);
 var arr9= generateirdyDataPoints(size,read,write,onephase_inc);
 var arr10= generatetrdyDataPoints(size,read,write,onephase_inc);
 var arr11= generatedevselDataPoints(size,read,write,onephase_inc);
-var arr12 = generateadDataPoints(numberofphases);
-
 //arrayA=arrayA.concat(arrayB);
   clockDataPoints =clockDataPoints.concat(arr1).join("");
   REQADataPoints =smooth(REQADataPoints.concat(arr2)).join("");
@@ -739,17 +729,13 @@ var arr12 = generateadDataPoints(numberofphases);
   IRDYDataPoints =smooth(IRDYDataPoints.concat(arr9)).join("");
   TRDYDataPoints =smooth(TRDYDataPoints.concat(arr10)).join("");
   DEVSELDataPoints =smooth(DEVSELDataPoints.concat(arr11)).join("");
-  ADDataPoints = ADDataPoints.concat(arr12).join("");
   
- // console.log(ADDataPoints); 
-  var signal_AD_labels = word_read + " ";
-  signal_AD_labels = signal_AD_labels.repeat(numberofphases);
   
-load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints ,signal_AD_labels,ADDataPoints);
+  console.log(REQADataPoints); 
+  
+  
+load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints );
 WaveDrom.ProcessAll();
-
-
-
 });
     });
 
