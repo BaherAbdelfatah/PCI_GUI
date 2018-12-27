@@ -741,7 +741,7 @@ var arr12 = generateadDataPoints(numberofphases);
   TRDYDataPoints =smooth(TRDYDataPoints.concat(arr10)).join("");
   DEVSELDataPoints =smooth(DEVSELDataPoints.concat(arr11)).join("");
   ADDataPoints = ADDataPoints.concat(arr12).join("");
-  
+  alert(ADDataPoints);
   
   
  // console.log(ADDataPoints); 
@@ -750,7 +750,7 @@ var arr12 = generateadDataPoints(numberofphases);
   
 load(clockDataPoints,REQADataPoints,REQBDataPoints,REQCDataPoints,GNTADataPoints,GNTBDataPoints,GNTCDataPoints,FRAMEDataPoints,IRDYDataPoints,TRDYDataPoints,DEVSELDataPoints ,signal_AD_labels,ADDataPoints);
 WaveDrom.ProcessAll();
-alert(ADDataPoints);
+
 
 
 
